@@ -1,0 +1,33 @@
+<cu-custom bgColor="bg-gradual-green">
+  <view slot="content">长沙垃圾分类手册</view>
+</cu-custom>
+
+<!-- <view class="box bg-darkGray" wx:if="{{ show_tip }}">
+  <view class='arrow'></view>
+  <view class='body' bindtap='showModal'>
+    <text>点击「添加到我的小程序」</text>
+  </view>
+</view> -->
+<view class="text-center padding">
+  <text>保护环境，共筑美丽星城！</text>
+</view>
+<view class="cu-bar search">
+  <view class="search-form round">
+    <text class="cuIcon-search text-green"></text>
+    <input type="text" placeholder="输入垃圾名称" confirm-type="search" value="{{ inputValue }}" bindtap="toSearch"></input>
+  </view>
+</view>
+
+<view class="padding ai-view text-green">
+  <text class="maybe">或</text>
+  <image src='/images/camera.png' class="aiCamera margin" bindtap="toAi" />
+  <text class="padding" bindtap="toAi">AI 自动识别</text>
+
+</view>
+
+<!-- <view class="kefu-box">
+  <view class="kefu-body" bindtap="onAikefu">
+    <image class="img" src="/images/ai-chat.png"></image>
+    <text class="q-tx">智能机器人</text>
+  </view>
+</view> -->

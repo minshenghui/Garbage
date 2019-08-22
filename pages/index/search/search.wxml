@@ -1,0 +1,51 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{ true }}">
+  <view slot="content">垃圾搜索</view>
+</cu-custom>
+
+<view class="cu-bar search">
+  <view class="search-form round">
+    <text class="cuIcon-search text-green"></text>
+    <input type="text" placeholder="输入垃圾名称" focus="true" confirm-type="search" value="{{ inputValue }}" bindinput="getSearchState"></input>
+    <button disabled="{{ !searchGarbage }}" class="cu-btn bg-blue shadow-blur round" bindtap="toSearch">搜索</button>
+  </view>
+</view>
+
+<view wx:if="{{ !startSearch }}" class="cu-bar bg-white solid-bottom state-name">
+  <view class="action">
+    <text class="cuIcon-title text-green"></text>搜索结果
+  </view>
+</view>
+
+<view wx:if="{{ notNull }}" class="margin-bottom margin-top">
+  <view class="cu-bar bg-white solid-bottom state-name">
+    <view class="action">
+      <text class="cuIcon-title text-blue"></text>{{ state.name }}
+    </view>
+  </view>
+
+  <swiper class="screen-swiper square-dot" indicator-color="#ffffff" indicator-active-color="#005d7e" indicator-dots="true" circular="true" autoplay="true" interval="3000" duration="500" style="height: {{ state.swiperHeight }}">
+
+    <swiper-item wx:for="{{ state.imgList }}" bindtap="toAbout" wx:for-item="list" wx:key>
+      <image class="swiper-img" lazy-load="true" src="{{ list.img }}" data-id="{{ index }}"></image>
+
+      <!-- 加载 CSS 动画 -->
+      <view class="loading">
+        <view class="loading-left"></view>
+        <view class="loading-right"></view>
+      </view>
+    </swiper-item>
+
+  </swiper>
+</view>
+
+
+<view wx:if="{{ searchFail }}" style="width: 100%; text-align:center">
+  <view class="padding text-grey">暂时没找到你想找到垃圾，请检查搜索词！</view>
+</view>
+
+<view wx:if="{{ isFail }}" style="width: 100%; text-align:center">
+  <view class="text-xsl padding">
+    <text class="cuIcon-roundclose text-red"></text>
+  </view>
+  <view class="padding">加载失败，刷新或检查网络是否通畅！</view>
+</view>
