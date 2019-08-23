@@ -20,8 +20,8 @@
 
 <view class="padding ai-view text-green">
   <text class="maybe">或</text>
-  <image src='/images/camera.png' class="aiCamera margin" bindtap="toAi" />
-  <text class="padding" bindtap="toAi">AI 自动识别</text>
+  <image src='/images/camera.png' class="aiCamera margin-top" bindtap="toAi" />
+  <text class="padding" bindtap="toAi">AI 智能识别</text>
 
 </view>
 

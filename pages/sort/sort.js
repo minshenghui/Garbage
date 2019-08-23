@@ -1,4 +1,5 @@
-const app = getApp()
+var app = getApp();
+var garbages = require('../../database/garbage.js');
 Page({
   data: {
     StatusBar: app.globalData.StatusBar,
@@ -8,33 +9,38 @@ Page({
     MainCur: 0,
     VerticalNavTop: 0,
     list: [],
-    load: true
+    load: true,
+
+
+    currentTab: 1
   },
+
   onLoad() {
-    wx.showLoading({
-      title: '加载中...',
-      mask: true
-    });
-    let list = [{
-      name: '可回收物'
-    }, {
-      name: '有害垃圾'
-    }, {
-      name: '干垃圾'
-    }, {
-      name: '湿垃圾'
-    }];
-    // for (let i = 0; i < 26; i++) {
-    //   list[i] = {};
-    //   list[i].name = String.fromCharCode(65 + i);
-    //   list[i].id = i;
-    // }
     this.setData({
-      list: list,
-      listCur: list[0]
+      garbageList: garbages.garbageList,
+      tabBarWidth: wx.getSystemInfoSync().windowWidth - 168
     })
   },
 
+  //滑动切换
+  swiperTab: function(e) {
+    this.setData({
+      currentTab: e.detail.current
+    });
+  },
+
+  //点击切换
+  toTab: function(e) {
+    var that = this;
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
+    // this.getGarbage(e.currentTarget.dataset.current)
+  },
 
   // 搜索
   toSearch() {
@@ -42,7 +48,25 @@ Page({
       url: '/pages/index/search/search',
     })
   },
-  
+
+  getGarbage(sortId) {
+    wx.showLoading({
+      title: '加载中...',
+    })
+    wx.cloud.init();
+    var db = wx.cloud.database();
+    db.collection('product').where({
+      sortId: Number(sortId)
+    })
+    
+    .get({
+      success(res) {
+        wx.hideLoading()
+        console.log(res.data)
+      }
+    })
+  },
+
   onReady() {
     wx.hideLoading()
   },

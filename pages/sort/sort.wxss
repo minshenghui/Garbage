@@ -1,8 +1,73 @@
+page {
+  background: #fff;
+}
+
+.tabBar {
+  display: flex;
+  flex-direction: column;
+  width: 168rpx;
+  position: fixed;
+  z-index: 999
+}
+
+.tab-bar {
+  padding-bottom: 10rpx;
+  background: #fff;
+  color: #979797;
+  border-right: 4rpx solid transparent
+}
+
+.tab-img {
+  width: 66rpx;
+  height: 66rpx;
+  position: relative;
+  left: -33rpx;
+  margin: 18rpx 0 8rpx 50%;
+  display: block;
+}
+
+.khsw {
+  background: #f1f1f1;
+  color: #215287;
+  font-weight: bold;
+  border-right: 4rpx solid #215287
+}
+
+.yhlj {
+  background: #f1f1f1;
+  color: #EA3E30;
+  font-weight: bold;
+  border-right: 4rpx solid #EA3E30
+}
+
+.glj {
+  background: #f1f1f1;
+  color: #2E2C2A;
+  font-weight: bold;
+  border-right: 4rpx solid #2E2C2A
+}
+
+.slj {
+  background: #f1f1f1;
+  color: #62423A;
+  font-weight: bold;
+  border-right: 4rpx solid #62423A
+}
+
+.active {
+  color: #f65959;
+  border-right: 4rpx solid #f65959;
+}
+
+.swiper-bar {
+  background: red;
+}
+
 .VerticalNav.nav {
   width: 288rpx;
   margin-top: 108rpx;
   white-space: initial;
-  background-color: #fff
+  background-color: #fff;
 }
 
 .VerticalNav.nav .cu-item {
@@ -11,13 +76,14 @@
   margin: 0;
   border: none;
   height: 66px;
-  line-height: 130rpx!important;
+  line-height: 130rpx !important;
   position: relative;
 }
 
 .VerticalNav.nav .cu-item.cur {
   background-color: #f1f1f1;
 }
+
 .VerticalNav.nav .cu-item.cur::after {
   content: "";
   width: 8rpx;
@@ -30,9 +96,11 @@
   bottom: 0;
   margin: auto;
 }
-.VerticalBox{
+
+.VerticalBox {
   display: flex;
 }
-.VerticalMain{
+
+.VerticalMain {
   background-color: #f1f1f1;
 }
